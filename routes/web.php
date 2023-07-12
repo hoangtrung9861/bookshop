@@ -54,6 +54,18 @@ Route::group(['middleware' => 'checklogin'], function () {
     Route::get('profile', [AuthController::class, 'showProfile'])->name('show-profile');
     Route::post('profile', [AuthController::class, 'profile'])->name('profile');
 
+
+
+
+
+
+
+
+
+
+
+
+    
     // Route::group(['middleware' => 'checkadmin'], function () {
     //     Route::get('/home', [DashboardController::class, 'home'])->name('admin');
 
