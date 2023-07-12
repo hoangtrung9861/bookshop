@@ -51,20 +51,20 @@ Route::get('/home', [DashboardController::class, 'home'])->name('admin');
 // Route::post('login', [DashboardController::class, 'login'])->name('login');
 
 Route::group(['middleware' => 'checklogin'], function () {
-    Route::get('profile', [DashboardController::class, 'showProfile'])->name('show-profile');
-    Route::post('profile', [DashboardController::class, 'profile'])->name('profile');
+    Route::get('profile', [AuthController::class, 'showProfile'])->name('show-profile');
+    Route::post('profile', [AuthController::class, 'profile'])->name('profile');
 
-    Route::group(['middleware' => 'checkadmin'], function () {
-        Route::get('/home', [DashboardController::class, 'home'])->name('admin');
+    // Route::group(['middleware' => 'checkadmin'], function () {
+    //     Route::get('/home', [DashboardController::class, 'home'])->name('admin');
 
-        Route::get('/admin-product', [ProductController::class, 'index'])->name('adminProduct');
+    //     Route::get('/admin-product', [ProductController::class, 'index'])->name('adminProduct');
 
-        Route::get('/admin-order', [OrderController::class, 'index'])->name('adminOrder');
+    //     Route::get('/admin-order', [OrderController::class, 'index'])->name('adminOrder');
 
-        Route::get('/admin-account', [AccountController::class, 'index'])->name('adminAccount');
+    //     Route::get('/admin-account', [AccountController::class, 'index'])->name('adminAccount');
 
-        Route::resource('/product', ProductController::class);
-    });
+    //     Route::resource('/product', ProductController::class);
+    // });
 });
 
 // login - register - logout
@@ -73,7 +73,8 @@ Route::post('/post-login', [AuthController::class, 'postLogin'])->name('login.po
 Route::get('/registration', [AuthController::class, 'registration'])->name('register');
 Route::post('/post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('logout', [DashboardController::class, 'logout'])->name('logout');
+Route::post('profile', [AuthController::class, 'profile'])->name('profile');
+// Route::get('logout', [DashboardController::class, 'logout'])->name('logout');
 
 //role and permission
 Route::group(['middleware' => ['auth']], function () {

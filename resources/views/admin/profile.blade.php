@@ -58,7 +58,7 @@
                             </ul>
                           </li> 
 							  @else 
-						  <li class="menu-has-children"><a href="">{{auth()->user()->firstname}} {{auth()->user()->lastname}}</a>
+						  <li class="menu-has-children"><a href="">{{auth()->user()->name}} </a>
 							<ul> 
 							  <li><a class="" href="{{ Route('profile') }}">Profile</a></li>
 				              <li><a class="" href="{{ Route('logout') }}">LogOut</a></li> 
@@ -85,20 +85,15 @@
                             <form class="user" action="{{route('profile')}}" method="POST">
                                 @csrf
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user @error('firstname') is-invalid @enderror" id="exampleFirstName"
-                                            placeholder="First Name" name="firstname" value="{{auth()->user()->firstname}}">
-                                            @if ($errors->has('firstname'))
-                                           <span class="text-danger" style=" font-size: 14px">{{ $errors->first('firstname') }}</span>
+
+                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror" id="exampleFirstName"
+                                            placeholder="UserName" name="name" value="{{auth()->user()->name}}">
+                                            @if ($errors->has('name'))
+                                           <span class="text-danger" style=" font-size: 14px">{{ $errors->first('name') }}</span>
                                            @endif
                                     </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user @error('lastname') is-invalid @enderror" id="exampleLastName"
-                                            placeholder="Last Name" name="lastname" value="{{auth()->user()->lastname}}">
-                                            @if ($errors->has('lastname'))
-                                           <span class="text-danger" style=" font-size: 14px">{{ $errors->first('lastname') }}</span>
-                                           @endif
-                                    </div>
+
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -108,7 +103,7 @@
                                     <div class="col-sm-6">
                                         <input type="number" class="form-control form-control-user @error('phone') is-invalid @enderror" id="exampleInputPhone"
 
-                                            placeholder="Phone number" name="phone" value="0{{auth()->user()->phone}}">
+                                            placeholder="Phone number" name="phone" value="{{auth()->user()->phone}}">
 
                                             @if ($errors->has('phone'))
                                            <span class="text-danger" style=" font-size: 14px">{{ $errors->first('phone') }}</span>

@@ -37,8 +37,8 @@ class AuthController extends Controller
             return redirect()->intended('/')
                 ->withSuccess('You have Successfully loggedin');
         }
-        
-        return redirect("login")->with('error','Email or Password is inconnect');
+
+        return redirect("login")->with('error', 'Email or Password is inconnect');
     }
     public function postRegistration(Request $request)
     {
@@ -65,10 +65,31 @@ class AuthController extends Controller
 
     public function logout()
     {
-        Session::flush();
         Auth::logout();
-
-        return Redirect('login');
+        return redirect()->route('home');
     }
 
+    public function showProfile()
+    {
+        return view('admin.profile');
+    }
+    public function profile(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|alpha|min:2|max:30',
+            'phone' => 'required|min:11|numeric',
+            'password' => 'nullable|min:8',
+            'address' => 'required',
+        ]);
+
+        $user = User::find(\auth()->id());
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->password = bcrypt($request->input('password'));
+
+
+        $user->save();
+        return redirect()->route('home')->with('success', 'cap nhat thanh cong');
+    }
 }
