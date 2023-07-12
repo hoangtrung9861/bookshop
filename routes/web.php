@@ -13,6 +13,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\Userontroller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,10 +46,10 @@ Route::get('/product/{slug}', [Homecontroller::class, 'products'])->name('catego
 Route::get('/home', [DashboardController::class, 'home'])->name('admin');
 
 Route::get('register', [DashboardController::class, 'showFormRegister'])->name('show-form-register');
-Route::post('register', [DashboardController::class, 'register'])->name('register');
+// Route::post('register', [DashboardController::class, 'register'])->name('register');
 
-Route::get('login', [DashboardController::class, 'showFormLogin'])->name('show-form-login');
-Route::post('login', [DashboardController::class, 'login'])->name('login');
+// Route::get('login', [DashboardController::class, 'showFormLogin'])->name('show-form-login');
+// Route::post('login', [DashboardController::class, 'login'])->name('login');
 
 Route::group(['middleware' => 'checklogin'], function () {
     Route::get('profile', [DashboardController::class, 'showProfile'])->name('show-profile');
@@ -69,19 +70,19 @@ Route::group(['middleware' => 'checklogin'], function () {
 
 Route::get('logout', [DashboardController::class, 'logout'])->name('logout');
 
-//login - register - logout
-//Route::get('/login', [AuthController::class, 'index'])->name('login');
-// Route::post('/post-login', [AuthController::class, 'postLogin'])->name('login.post');
+// login - register - logout
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/post-login', [AuthController::class, 'postLogin'])->name('login.post');
 
-// Route::get('/registration', [AuthController::class, 'registration'])->name('register');
-// Route::post('/post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
-// Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/registration', [AuthController::class, 'registration'])->name('register');
+Route::post('/post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //role and permission
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('/roles', RoleController::class);
     Route::resource('/users', UserController::class);
-    // Route::resource('products', ProductController::class);
+    // Route::resource('/products', ProductController::class);
 });
 
 
@@ -123,4 +124,3 @@ Route::get('/session-data', function () {
 
 Route::post('/cart/update-quantity', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
 Route::post('/cart/remove-item', [CartController::class, 'removeItem'])->name('cart.removeItem');
-

@@ -58,15 +58,11 @@
                     </div>
                 </div>
             </div>
-            
-            
             @if ($message = Session::get('success'))
                 <div class="alert alert-success">
                     <p>{{ $message }}</p>
                 </div>
-            @endif
-            
-            
+            @endif            
             <table class="table table-bordered">
               <tr>
                  <th>No</th>
@@ -91,13 +87,7 @@
                 </tr>
                 @endforeach
             </table>
-            
-            
             {!! $roles->render() !!}
-            
-            
-            <p class="text-center text-primary"><small>Tutorial by ItSolutionStuff.com</small></p>
-
             <!-- Footer -->
             @include('admin.layout.partials.footer')
             <!-- End of Footer -->
@@ -108,13 +98,6 @@
     </div>
     <!-- End of Page Wrapper -->
 
-
-
-
-
-
-
-<p class="text-center text-primary"><small>Tutorial by ItSolutionStuff.com</small></p>
 <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- Core plugin JavaScript-->

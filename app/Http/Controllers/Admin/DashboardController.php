@@ -16,31 +16,31 @@ class DashboardController extends Controller
         return view('admin.product');
     }
 
-    public function showFormRegister()
-    {
-        return view ('admin.register');
-    }
+    // public function showFormRegister()
+    // {
+    //     return view ('admin.register');
+    // }
     
-    public function register(Request $request)
-    {
-        $validatedData = $request->validate([
-            'firstname' => 'required|alpha|min:2|max:30',
-            'lastname' => 'required|alpha|min:2|max:30',
-            'phone' => 'required|min:11|numeric',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
-            'Confirm-Password' => 'required|same:password',
-        ]);
-        $user = new User();
-        $user->firstname =$request->firstname;
-        $user->lastname =$request->lastname;
-        $user->phone =$request->phone;
-        $user->email =$request->email;
-        $user->password =bcrypt($request->password);
+    // public function register(Request $request)
+    // {
+    //     $validatedData = $request->validate([
+    //         'firstname' => 'required|alpha|min:2|max:30',
+    //         'lastname' => 'required|alpha|min:2|max:30',
+    //         'phone' => 'required|min:11|numeric',
+    //         'email' => 'required|email|unique:users',
+    //         'password' => 'required|min:8',
+    //         'Confirm-Password' => 'required|same:password',
+    //     ]);
+    //     $user = new User();
+    //     $user->firstname =$request->firstname;
+    //     $user->lastname =$request->lastname;
+    //     $user->phone =$request->phone;
+    //     $user->email =$request->email;
+    //     $user->password =bcrypt($request->password);
 
-        $user->save();
-        return  redirect()->route('show-form-login')->with('success','Dang ki thanh cong');
-    }
+    //     $user->save();
+    //     return  redirect()->route('show-form-login')->with('success','Dang ki thanh cong');
+    // }
 
     public function showFormLogin()
     {
@@ -81,9 +81,9 @@ class DashboardController extends Controller
         return redirect()->route('home')->with('success','cap nhat thanh cong');
     }
 
-    public function logout()
-    {
-        Auth::logout();
-        return redirect()->route('home');
-    }
+    // public function logout()
+    // {
+    //     Auth::logout();
+    //     return redirect()->route('home');
+    // }
 }

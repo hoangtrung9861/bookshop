@@ -19,99 +19,87 @@ class AuthController extends Controller
      * Write code on Method
 
      */
-    // public function index()
+    public function index()
+    {
+        return view('auth.login');
+    }
+
+    /**
+     * Write code on Method
+
+     */
+    public function registration()
+    {
+        return view('auth.registration');
+    }
+
+    /**
+     * Write code on Method
+
+     */
+    public function postLogin(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('/')
+                ->withSuccess('You have Successfully loggedin');
+        }
+        
+        return redirect("login")->with('error','Email or Password is inconnect');
+    }
+    public function postRegistration(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+        ]);
+
+        $data = $request->all();
+        $check = $this->create($data);
+
+        return redirect("login")->withSuccess('Great! You have Successfully loggedin');
+    }
+
+    /**
+
+     */
+    // public function dashboard()
     // {
-    //     return view('auth.login');
-    // }
-
-    // /**
-    //  * Write code on Method
-
-    //  */
-    // public function registration()
-    // {
-    //     return view('auth.registration');
-    // }
-
-    // /**
-    //  * Write code on Method
-
-    //  */
-    // public function postLogin(Request $request)
-    // {
-    //     $request->validate([
-    //         'email' => 'required',
-    //         'password' => 'required',
-    //     ]);
-
-    //     $credentials = $request->only('email', 'password');
-    //     if (Auth::attempt($credentials)) {
-    //         return redirect()->intended('/')
-    //             ->withSuccess('You have Successfully loggedin');
+    //     if(Auth::check()){
+    //         return view('dashboard');
     //     }
 
-    //     return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
-    // }
-    // public function postRegistration(Request $request)
-    // {
-    //     $request->validate([
-    //         'name' => 'required',
-    //         'email' => 'required|email|unique:users',
-    //         'password' => 'required|min:6',
-    //     ]);
-
-    //     $data = $request->all();
-    //     $createUser = $this->create($data);
-
-    //     $token = Str::random(64);
-
-    //     UserVerify::create([
-    //         'user_id' => $createUser->id,
-    //         'token' => $token
-    //     ]);
-
-    //     Mail::send('email.emailVerificationEmail', ['token' => $token], function ($message) use ($request) {
-    //         $message->to($request->email);
-    //         $message->subject('Email Verification Mail');
-    //     });
-
-    //     return redirect("login")->withSuccess('Great! You have Successfully loggedin');
+    //     return redirect("login")->withSuccess('Opps! You do not have access');
     // }
 
-    // /**
+    /**
+     * Write code on Method
+     */
+    public function create(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password'])
+        ]);
+    }
 
-    //  */
-    // // public function dashboard()
-    // // {
-    // //     if(Auth::check()){
-    // //         return view('dashboard');
-    // //     }
+    /**
+     * Write code on Method
+     */
+    public function logout()
+    {
+        Session::flush();
+        Auth::logout();
 
-    // //     return redirect("login")->withSuccess('Opps! You do not have access');
-    // // }
-
-    // /**
-    //  * Write code on Method
-    //  */
-    // public function create(array $data)
-    // {
-    //     return User::create([
-    //         'name' => $data['name'],
-    //         'email' => $data['email'],
-    //         'password' => Hash::make($data['password'])
-    //     ]);
-    // }
-
-    // /**
-    //  * Write code on Method
-    //  */
-    // public function logout()
-    // {
-    //     Session::flush();
-    //     Auth::logout();
-
-    //     return Redirect('login');
-    // }
+        return Redirect('login');
+    }
 
     // public function verifyAccount($token)
     // {

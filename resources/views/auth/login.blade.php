@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +20,7 @@
 
 <body class="bg-gradient-primary">
 
-    
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-10 col-lg-12 col-md-9">
@@ -28,7 +29,7 @@
 
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block">
-                                <img src="{{ asset('/images/menread.jpg') }}" alt="">
+                                <img src="{{ asset('/images/menread.jpg') }}" alt="" style="width:485px;height:630px;">
                             </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
@@ -46,6 +47,13 @@
                                                 autocomplete="email" required>
                                             @if ($errors->has('email'))
                                                 <span class="text-danger">{{ $errors->first('email') }}</span>
+                                            @endif
+                                        </div>
+
+                                        <div class="form-group">
+                                            @if (session('error'))
+                                                <span class="text-danger" style=" font-size: 14px">
+                                                    {{ session('error') }}</span>
                                             @endif
                                         </div>
 
@@ -84,7 +92,7 @@
                                     </div>
                                     {{-- @endif --}}
                                     <div class="text-center">
-                                        <a class="small" href="{{ Route('register')}}">Create an Account!</a>
+                                        <a class="small" href="{{ Route('register') }}">Create an Account!</a>
                                     </div>
                                 </div>
                             </div>
@@ -94,13 +102,13 @@
                 </div>
             </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="{{ asset('admin/js/sb-admin-2.min.js') }}"></script>
+            <!-- Bootstrap core JavaScript-->
+            <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
+            <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="{{ asset('admin/js/sb-admin-2.min.js') }}"></script>
 
 </body>
 

@@ -10,7 +10,7 @@
 							<p class="text-white pt-20 pb-20">
                                 Thế giới ngầm được phản ánh trong tiểu thuyết Bố già là sự gặp gỡ giữa một bên là ý chí cương cường và nền tảng gia tộc chặt chẽ theo truyền thống mafia xứ Sicily với một bên là xã hội Mỹ nhập nhằng đen trắng, mảnh đất màu mỡ cho những cơ hội làm ăn bất chính hứa hẹn những món lợi kếch xù. Trong thế giới ấy, hình tượng Bố già được tác giả dày công khắc họa đã trở thành bức chân dung bất hủ trong lòng người đọc.
 							</p>
-							<a href="{{ Route('singleProducts', $b->slug) }}" class="primary-btn text-uppercase">Buy Now for 128.000₫</a>
+							{{-- <a href="{{ Route('singleProducts', $b->slug) }}" class="primary-btn text-uppercase">Buy Now for 128.000₫</a> --}}
 						</div>
 						<div class="col-lg-5 banner-right">
 							<img class="img-fluid" src="{{ asset('/images/main-banner.jpg') }}" style="width: 90%" alt="">

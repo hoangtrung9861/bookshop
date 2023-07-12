@@ -97,16 +97,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Role:</strong>
-                        {{-- @foreach ($roles as $role)
-                            <option value="{{ $role->name }}" {{ $role->name == ' ' ? 'selected' : '' }}>
-                                {{ $role->name }}</option>
-                        @endforeach --}}
-                        {{-- {!! Form::select('roles[]', $roles, [], ['class' => 'form-control', 'multiple']) !!} --}}\
-                        <select name="roles[]" multiple class="form-control">
-                            <option value="Admin" selected="selected">Amin</option>
-                            <option value="Users" selected="selected">User</option>
-                        </select>
-
+                        {!! Form::select('roles[]', $roles, [], ['class' => 'form-control', 'multiple']) !!}
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
