@@ -49,9 +49,6 @@ class ProductController extends Controller
         return view('admin.product.create', compact('cates'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $books = $request->all();

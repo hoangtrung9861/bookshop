@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -237,4 +237,4 @@
 <script src="{{ asset('guest/js/jquery.counterup.min.js') }}"></script>			
 <script src="{{ asset('guest/js/mail-script.js') }}"></script>	
 <script src="{{ asset('guest/js/main.js') }}"></script>	
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script> --}}

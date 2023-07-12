@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -257,4 +257,4 @@
 			<script src="{{ asset('guest/js/waypoints.min.js') }}"></script>
 			<script src="{{ asset('guest/js/jquery.counterup.min.js') }}"></script>			
 			<script src="{{ asset('guest/js/mail-script.js') }}"></script>	
-			<script src="{{ asset('guest/js/main.js') }}"></script>	
+			<script src="{{ asset('guest/js/main.js') }}"></script>	 --}}
