@@ -73,8 +73,10 @@
                         @guest
                             <li class="menu-has-children"><a href=""><i class="fa-solid fa-user"></i></a>
                                 <ul>
-                                    <li><a class="{{ request()->is('login') ? 'active' : '' }}"
-                                            href="{{ Route('login') }}">Login</a></li>
+                                    <li>
+                                        <a class="{{ request()->is('login') ? 'active' : '' }}"
+                                            href="{{ Route('login') }}">Login</a>
+                                        </li>
                                     <li><a class="{{ request()->is('register') ? 'active' : '' }}"
                                             href="{{ Route('register') }}">Sign up</a></li>
                                 </ul>

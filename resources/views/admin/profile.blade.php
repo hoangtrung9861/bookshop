@@ -34,25 +34,25 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Profile</h1>
                             </div>
                             <form class="user" action="{{route('profile')}}" method="POST">
                                 @csrf
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user @error('firstname') is-invalid @enderror" id="exampleFirstName"
-                                            placeholder="First Name" name="firstname" value="{{auth()->user()->firstname}}">
-                                            @if ($errors->has('firstname'))
-                                           <span class="text-danger" style=" font-size: 14px">{{ $errors->first('firstname') }}</span>
+                                    <div class="col-sm-12  mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror" id="exampleName"
+                                            placeholder="User Name" name="name" value="{{auth()->user()->name}}">
+                                            @if ($errors->has('name'))
+                                           <span class="text-danger" style=" font-size: 14px">{{ $errors->first('name') }}</span>
                                            @endif
                                     </div>
-                                    <div class="col-sm-6">
+                                    {{-- <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user @error('lastname') is-invalid @enderror" id="exampleLastName"
                                             placeholder="Last Name" name="lastname" value="{{auth()->user()->lastname}}">
                                             @if ($errors->has('lastname'))
                                            <span class="text-danger" style=" font-size: 14px">{{ $errors->first('lastname') }}</span>
                                            @endif
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -62,7 +62,7 @@
                                     <div class="col-sm-6">
                                         <input type="number" class="form-control form-control-user @error('phone') is-invalid @enderror" id="exampleInputPhone"
 
-                                            placeholder="Phone number" name="phone" value="0{{auth()->user()->phone}}">
+                                            placeholder="Phone number" name="phone" value="{{auth()->user()->phone}}">
 
                                             @if ($errors->has('phone'))
                                            <span class="text-danger" style=" font-size: 14px">{{ $errors->first('phone') }}</span>

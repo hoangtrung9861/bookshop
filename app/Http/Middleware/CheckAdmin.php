@@ -22,6 +22,6 @@ class CheckAdmin
                 return $next($request);
             }
         }
-        return redirect()->route('show-form-login');
+        return redirect()->route('login');
     }
 }
